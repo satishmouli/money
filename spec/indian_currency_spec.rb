@@ -49,4 +49,11 @@ describe IndianCurrency do
     indian_currency3 = IndianCurrency.new(8,40)
     expect(indian_currency1 + indian_currency2).to eq(indian_currency3)
   end
+
+  it "sum of money with 5 rupees 40 paise and nilis equal to nil" do
+    indian_currency1 = IndianCurrency.new(5,40)
+    indian_currency2 = nil
+    indian_currency3 = nil
+    expect(indian_currency1 + indian_currency2).to eq(indian_currency3)
+  end
 end
