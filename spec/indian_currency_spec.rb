@@ -64,10 +64,10 @@ describe IndianCurrency do
     expect(indian_currency1 - indian_currency2).to eq(indian_currency3)
   end
 
-  it "with 2 rupees 400 paise after deduction of 3 rupee 30 paise should be equal to 2 rupees 70 paise" do
+  it "with 2 rupees 400 paise after deduction of 2 rupee 540 paise should be equal to -1 rupees -40 paise" do
     indian_currency1 = IndianCurrency.new(2,400)
-    indian_currency2 = IndianCurrency.new(3,30)
-    indian_currency3 = IndianCurrency.new(2,70)
+    indian_currency2 = IndianCurrency.new(2,540)
+    indian_currency3 = IndianCurrency.new(-1,-40)
     expect(indian_currency1 - indian_currency2).to eq(indian_currency3)
   end
 
