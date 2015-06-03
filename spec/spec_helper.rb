@@ -1,3 +1,3 @@
 require 'simplecov'
 SimpleCov.start
-require_relative '../lib/indian_currency.rb'
+require_relative '../lib/money.rb'
