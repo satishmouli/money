@@ -7,9 +7,8 @@ class IndianCurrency
   end
 
   def ==(other)
-    if other && other.class == self.class
-      (@rupee == other.rupee && @paise == other.paise)
-    end
+    return unless (other && other.class == self.class)
+    (@rupee == other.rupee && @paise == other.paise)
   end
   
   def +(other)

@@ -1,0 +1,30 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/manasgalipalli/Money/Money/lib/indian_currency.rb": [
+        null,
+        1,
+        1,
+        1,
+        17,
+        17,
+        null,
+        null,
+        1,
+        8,
+        6,
+        null,
+        null,
+        1,
+        2,
+        null,
+        1,
+        0,
+        null,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1433327958
+  }
+}
