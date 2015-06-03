@@ -84,4 +84,10 @@ describe IndianCurrency do
     indian_currency3 = nil
     expect(indian_currency1 - indian_currency2).to eq(indian_currency3)
   end
+
+  it "with 1 rupee and 40 paise should be equal to money with 0 rupee and 140 paise in terms of hash" do
+    indian_currency1 = IndianCurrency.new(1,40)
+    indian_currency2 = IndianCurrency.new(0,140)
+    expect(indian_currency1.hash).to eq(indian_currency2.hash)
+  end
 end
