@@ -15,7 +15,8 @@ class IndianCurrency
   def +(other)
     IndianCurrency.new(@rupee + other.rupee, @paise + other.paise)
   end
-
-  #[rupee, paise].hash
+  def hash
+    [rupee, paise].hash
+  end
   alias_method :eql?, :==
 end
