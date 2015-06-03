@@ -15,6 +15,12 @@ class IndianCurrency
     return nil unless (other && other.class == self.class)
     IndianCurrency.new(@rupee + other.rupee, @paise + other.paise)
   end
+
+  def -(other)
+    return nil unless (other && other.class == self.class)
+    IndianCurrency.new(@rupee - other.rupee, @paise - other.paise)
+  end
+
   def hash
     [rupee, paise].hash
   end
