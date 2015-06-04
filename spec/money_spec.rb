@@ -68,7 +68,7 @@ describe Money do
   end
 
   describe "Deduction" do
-    it "with 5 rupees 40 paise after deduction of 1 rupee 30 paise should be equal to 4 rupees 70 paise" do
+    it "with 5 rupees 40 paise after deduction of 1 rupee 30 paise should be equal to 4 rupees 10 paise" do
       money1 = Money.new(5,40)
       money2 = Money.new(1,30)
       money3 = Money.new(4,10)
@@ -79,7 +79,11 @@ describe Money do
       money1 = Money.new(2,400)
       money2 = Money.new(2,540)
       money3 = Money.new(-1,-40)
-      expect(money1 - money2).to eq(money3)
+      begin
+        money1 - money2
+      rescue => detail
+        expect(detail.to_s).to eq("Negative Money")
+      end
     end
 
     it "with 2 rupees 400 paise after deduction nil should be equal to nil" do

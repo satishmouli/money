@@ -21,6 +21,7 @@ class Money
 
   def -(other)
     return nil unless (other && other.class == self.class)
+    raise "Negative Money" if (@paise - other.paise)<0
     Money.initialize_paise(@paise - other.paise)
   end
 
