@@ -26,13 +26,10 @@ class Money
 
   def to_s
     res = ""
-    paise_abs = @paise
-    if(paise < 0)
-      res = res + "- " 
-      paise_abs = -1 * @paise
-    end
+    paise_abs = @paise.abs
     rupee = paise_abs/100
     paise_temp = paise_abs%100
+    res = res + "- " if paise < 0
     res = res + "Rupee #{rupee}" if rupee != 0
     res = res + " " if rupee != 0 && paise_temp != 0
     res = res + "Paise #{paise_temp}" if paise_temp != 0

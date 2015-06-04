@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative './spec_helper'
 
 describe Money do
   describe "Equality" do
@@ -109,9 +109,14 @@ describe Money do
       expect(money.to_s).to eq("- Rupee 2 Paise 40")
     end
 
-    it "with  2 rupee paisa should return -Rupee 2" do
+    it "with  2 rupee 0 paisa should return -Rupee 2" do
       money = Money.new(-2,0)
       expect(money.to_s).to eq("- Rupee 2")
+    end
+
+    it "with  0 rupee 0 paisa should return empty string" do
+      money = Money.new(0,0)
+      expect(money.to_s).to eq("")
     end
 
   end
