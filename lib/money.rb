@@ -3,10 +3,8 @@ require_relative './negative_money_error'
 class Money
   attr_reader :paise
   def initialize(rupee, paise)
-    paise_temp = rupee*100 + paise
-    raise NegativeMoneyError.new("Negative Money Creation") if paise_temp<0
-    @paise = paise_temp
-
+    @paise = rupee * 100 + paise
+    raise NegativeMoneyError.new("Negative Money Creation") if @paise < 0
   end
 
   def self.initialize_paise(paise)
@@ -31,10 +29,8 @@ class Money
 
   def to_s
     res = ""
-    paise_abs = @paise.abs
-    rupee = paise_abs/100
-    paise_temp = paise_abs%100
-    res = res + "- " if paise < 0
+    rupee = @paise/100
+    paise_temp = @paise%100
     res = res + "Rupee #{rupee}" if rupee != 0
     res = res + " " if rupee != 0 && paise_temp != 0
     res = res + "Paise #{paise_temp}" if paise_temp != 0
