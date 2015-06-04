@@ -1,3 +1,4 @@
+
 require_relative './spec_helper'
 
 describe Money do
@@ -129,4 +130,28 @@ describe Money do
       expect {Money.new(-2,-50)}.to raise_error(NegativeMoneyError)
     end
   end
+
+  describe "Sorting Money" do
+    it "with 2 rupees 40 paise, 4 rupees 10 paise, 400 paise should return 2 rupees 40 paise, 400 paise, 4 rupees 10 paise , " do
+      money_array = [Money.new(2,40), Money.new(4,10), Money.new(0,400)]
+      sorted_money_array = money_array.sort! { |x,y| x <=> y }
+      expected_money_array = [Money.new(2,40), Money.new(0,400), Money.new(4,10)]
+      expect(sorted_money_array).to eq(expected_money_array)
+    end
+
+    it "with 2 rupees 40 paise, 4 rupees 10 paise, 400 paise should return 2 rupees 40 paise, 400 paise, 4 rupees 10 paise , " do
+      money_array = [Money.new(2,40), Money.new(4,10), Money.new(0,400)]
+      sorted_money_array = money_array.sort! { |x,y| x <=> y }
+      expected_money_array = [Money.new(2,40), Money.new(0,400), Money.new(4,10)]
+      expect(sorted_money_array).to eq(expected_money_array)
+    end
+
+    it "with 2 rupees 40 paise, 4 rupees 10 paise, 400 paise should return 2 rupees 40 paise, 400 paise, 4 rupees 10 paise , " do
+      money_array = [Money.new(2,40), Money.new(4,10), Money.new(0,400)]
+      sorted_money_array = money_array.sort! { |x,y| x <=> y }
+      expected_money_array = [Money.new(2,40), Money.new(0,400), Money.new(4,10)]
+      expect(sorted_money_array).to eq(expected_money_array)
+    end
+  end
+
 end
