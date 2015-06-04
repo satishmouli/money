@@ -75,15 +75,16 @@ describe Money do
       expect(money1 - money2).to eq(money3)
     end
 
-    it "with 2 rupees 400 paise after deduction of 2 rupee 540 paise should be equal to -1 rupees -40 paise" do
+    it "with 2 rupees 400 paise after deduction of 2 rupee 540 paise should raise Negative Money exception" do
       money1 = Money.new(2,400)
       money2 = Money.new(2,540)
-      money3 = Money.new(-1,-40)
-      begin
-        money1 - money2
-      rescue => detail
-        expect(detail.to_s).to eq("Negative Money")
-      end
+      expect {money1 - money2}.to raise_error("Negative Money")
+    end
+
+    it "with 2 rupees 400 paise after deduction of 10 rupee 40 paise should raise Negative Money exception" do
+      money1 = Money.new(2,400)
+      money2 = Money.new(10,40)
+      expect {money1 - money2}.to raise_error("Negative Money")
     end
 
     it "with 2 rupees 400 paise after deduction nil should be equal to nil" do
