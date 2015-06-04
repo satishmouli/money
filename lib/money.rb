@@ -1,4 +1,4 @@
-# Represents money as combination of rupee-paise
+# Represents money as paise
 class Money
   attr_reader :paise
   def initialize(rupee, paise)
