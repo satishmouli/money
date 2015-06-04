@@ -38,13 +38,7 @@ class Money
   end
 
   def <=>(other)
-    if self.paise < other.paise
-      -1
-    elsif self.paise > other.paise
-      1
-    else
-      0
-    end
+    self.paise <=> other.paise
   end
 
   def hash

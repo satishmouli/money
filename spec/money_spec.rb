@@ -139,17 +139,17 @@ describe Money do
       expect(sorted_money_array).to eq(expected_money_array)
     end
 
-    it "with 2 rupees 40 paise, 4 rupees 10 paise, 400 paise should return 2 rupees 40 paise, 400 paise, 4 rupees 10 paise , " do
-      money_array = [Money.new(2,40), Money.new(4,10), Money.new(0,400)]
+    it "with 3 rupees 20 paise, 6 rupees ,1 rupee 40 paise should return 1 rupee 40 paise, 3 rupees 20 paise, 6 rupees" do
+      money_array = [Money.new(3,20), Money.new(6,0), Money.new(1,40)]
       sorted_money_array = money_array.sort! { |x,y| x <=> y }
-      expected_money_array = [Money.new(2,40), Money.new(0,400), Money.new(4,10)]
+      expected_money_array = [Money.new(1,40), Money.new(3,20), Money.new(6,0)]
       expect(sorted_money_array).to eq(expected_money_array)
     end
 
-    it "with 2 rupees 40 paise, 4 rupees 10 paise, 400 paise should return 2 rupees 40 paise, 400 paise, 4 rupees 10 paise , " do
-      money_array = [Money.new(2,40), Money.new(4,10), Money.new(0,400)]
+    it "with 3 rupees 40 paise, 7 rupees 20 paise, 600 paise should return 3 rupees 40 paise, 600 paise, 7 rupees 20 paise , " do
+      money_array = [Money.new(3,40), Money.new(7,20), Money.new(0,600)]
       sorted_money_array = money_array.sort! { |x,y| x <=> y }
-      expected_money_array = [Money.new(2,40), Money.new(0,400), Money.new(4,10)]
+      expected_money_array = [Money.new(3,40), Money.new(0,600), Money.new(7,20)]
       expect(sorted_money_array).to eq(expected_money_array)
     end
   end
