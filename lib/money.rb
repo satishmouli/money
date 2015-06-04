@@ -1,6 +1,7 @@
 # Represents money as paise
 require_relative './negative_money_error'
 class Money
+  include Comparable
   attr_reader :paise
   def initialize(rupee, paise)
     @paise = rupee * 100 + paise

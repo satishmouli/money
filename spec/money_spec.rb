@@ -146,11 +146,23 @@ describe Money do
       expect(sorted_money_array).to eq(expected_money_array)
     end
 
-    it "with 3 rupees 40 paise, 7 rupees 20 paise, 600 paise should return 3 rupees 40 paise, 600 paise, 7 rupees 20 paise , " do
-      money_array = [Money.new(3,40), Money.new(7,20), Money.new(0,600)]
+    it "with 3 rupees 40 paise, 3 rupees 40 paise, 600 paise should return 3 rupees 40 paise, 600 paise, 7 rupees 20 paise , " do
+      money_array = [Money.new(3,40), Money.new(3,40), Money.new(0,600)]
       sorted_money_array = money_array.sort! { |x,y| x <=> y }
-      expected_money_array = [Money.new(3,40), Money.new(0,600), Money.new(7,20)]
+      expected_money_array = [Money.new(3,40), Money.new(3,40), Money.new(0,600)]
       expect(sorted_money_array).to eq(expected_money_array)
+    end
+
+    it "with 3 rupees 40 paise is not greater than 7 rupees 40 paise and should return false " do
+      expect(Money.new(3,40) > Money.new(7,40)).to eq(false)
+    end
+
+    it "with 7 rupees 40 paise is greater than 3 rupees 40 paise and should return true " do
+      expect(Money.new(7,40) > Money.new(3,40)).to eq(true)
+    end
+
+    it "with 3 rupees 40 paise is not greater than 3 rupees 40 paise and should return false " do
+      expect(Money.new(3,40) > Money.new(3,40)).to eq(false)
     end
   end
 
