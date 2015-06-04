@@ -39,6 +39,7 @@ class Money
   end
 
   def <=>(other)
+    return nil unless (other && other.class == self.class)
     self.paise <=> other.paise
   end
 
