@@ -1,8 +1,12 @@
 # Represents money as paise
+require_relative './negative_money_error'
 class Money
   attr_reader :paise
   def initialize(rupee, paise)
-    @paise = rupee*100 + paise
+    paise_temp = rupee*100 + paise
+    raise NegativeMoneyError.new("Negative Money Creation") if paise_temp<0
+    @paise = paise_temp
+
   end
 
   def self.initialize_paise(paise)
@@ -21,7 +25,7 @@ class Money
 
   def -(other)
     return nil unless (other && other.class == self.class)
-    raise "Negative Money" if (@paise - other.paise)<0
+    raise NegativeMoneyError.new("Negative Money") if (@paise - other.paise)<0
     Money.initialize_paise(@paise - other.paise)
   end
 

@@ -78,13 +78,13 @@ describe Money do
     it "with 2 rupees 400 paise after deduction of 2 rupee 540 paise should raise Negative Money exception" do
       money1 = Money.new(2,400)
       money2 = Money.new(2,540)
-      expect {money1 - money2}.to raise_error("Negative Money")
+      expect {money1 - money2}.to raise_error(NegativeMoneyError)
     end
 
     it "with 2 rupees 400 paise after deduction of 10 rupee 40 paise should raise Negative Money exception" do
       money1 = Money.new(2,400)
       money2 = Money.new(10,40)
-      expect {money1 - money2}.to raise_error("Negative Money")
+      expect {money1 - money2}.to raise_error(NegativeMoneyError)
     end
 
     it "with 2 rupees 400 paise after deduction nil should be equal to nil" do
@@ -109,20 +109,24 @@ describe Money do
       expect(money.to_s).to eq("Rupee 6 Paise 40")
     end
 
-    it "with - 2 rupee - 40 paisa should return - Rupee 2 Paise 400" do
-      money = Money.new(-2,-40)
-      expect(money.to_s).to eq("- Rupee 2 Paise 40")
-    end
-
-    it "with  2 rupee 0 paisa should return -Rupee 2" do
-      money = Money.new(-2,0)
-      expect(money.to_s).to eq("- Rupee 2")
-    end
-
     it "with  0 rupee 0 paisa should return empty string" do
       money = Money.new(0,0)
       expect(money.to_s).to eq("")
     end
 
+  end
+
+  describe "Negative Money Initialization" do
+    it "with -2 rupees 40 paise should raise Negative Money exception" do
+      expect {Money.new(-2,40)}.to raise_error(NegativeMoneyError)
+    end
+
+    it "with 2 rupee - 400 paisa should aise Negative Money exception" do
+      expect {Money.new(2,-400)}.to raise_error(NegativeMoneyError)
+    end
+
+    it "with  -2 rupee -50 paisa aise Negative Money exception" do
+      expect {Money.new(-2,-50)}.to raise_error(NegativeMoneyError)
+    end
   end
 end
